@@ -1,0 +1,609 @@
+/* ==========================================================================
+   1. RÉINITIALISATION GLOBALE & VARIABLES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.5s ease, opacity 0.5s ease;
+}
+
+:root {
+    --bg-color: #f4f7f6;
+    --text-color: #333;
+    --text-muted: #636e72;
+    --primary-color: #007bff;
+    --primary-light: rgba(0, 123, 255, 0.15); /* Adapté à votre bleu */
+    --btn-text: #ffffff;
+    --card-bg: #ffffff;
+}
+
+/* Thème Sombre */
+.dark-theme {
+    --bg-color: #1e1e24;
+    --text-color: #f4f7f6;
+    --text-muted: #b2bec3;
+    --primary-color: #ffc107; /* Jaune / Or */
+    --primary-light: rgba(255, 193, 7, 0.2);
+    --btn-text: #1e1e24;
+    --card-bg: #2a2a35;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed; 
+}
+
+/* Titres globaux des sections */
+section h2 {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+section h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: var(--primary-color);
+    margin: 10px auto 0 auto;
+    border-radius: 2px;
+}
+
+/* ==========================================================================
+   2. BARRE DE NAVIGATION & LOGO CSS
+   ========================================================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 10;
+}
+
+/* Conteneur global du logo */
+.logo-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.logo-icon {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, var(--primary-color), #00a8ff);
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px var(--primary-light);
+}
+
+.logo-dot {
+    width: 9px;
+    height: 9px;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ffffff;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.logo-brand {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.logo-sub {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--primary-color);
+}
+
+.logo-container:hover .logo-icon {
+    transform: rotate(90deg);
+}
+
+/* Liens de navigation */
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+#burger-menu {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   3. SECTION ACCUEIL / HERO SECTION (CARTE UX)
+   ========================================================================== */
+.hero-section {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.ux-card {
+    display: flex;
+    align-items: stretch;
+    max-width: 1000px;
+    width: 100%;
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Modifiez ces deux blocs dans votre CSS actuel : */
+
+.image-wrapper {
+    flex: 0.5;        /* 🚀 Réduit la largeur pour rendre l'image plus fine et discrète */
+    min-width: 220px; /* Largeur minimale adaptée à sa nouvelle taille réduite */
+    position: relative;
+    overflow: hidden;
+}
+
+
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     /* 🚀 Remplissage parfait : l'image se recadre en hauteur sans s'écraser */
+    cursor: pointer;
+}
+
+.ux-card:hover .profile-pic {
+    transform: scale(1.04);
+}
+
+.hero-text-block {
+    flex: 1.5;
+    padding: 50px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Éléments UX du texte d'accueil */
+.ux-badge {
+    background: var(--primary-light);
+    color: var(--primary-color);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.ux-description {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin: 15px 0 20px 0;
+}
+
+.ux-tags {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.ux-tags span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.highlight {
+    color: var(--primary-color);
+}
+
+#theme-toggle {
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: var(--btn-text);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   4. NOUVELLE SECTION : COMPÉTENCES (SKILLS)
+   ========================================================================== */
+.skills-section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.skill-category {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px var(--primary-light);
+}
+
+.skill-category h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.skill-category ul {
+    list-style: none;
+}
+
+.skill-category ul li {
+    font-size: 1rem;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    display: flex;
+    align-items: center;
+}
+
+.skill-category ul li:last-child {
+    border-bottom: none;
+}
+
+.skill-category ul li::before {
+    content: '▹';
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+/* ==========================================================================
+   5. SECTION PROJETS / RÉALISATIONS
+   ========================================================================== */
+.projects-section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.project-badge {
+    background: var(--primary-light);
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 15px;
+    margin-bottom: 12px;
+}
+
+.project-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    color: var(--text-muted);
+}
+
+/* Animation d'apparition au défilement (Scroll) */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   6. NOUVELLE SECTION : MON PARCOURS (TIMELINE)
+   ========================================================================== */
+.resume-section {
+    padding: 60px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline {
+    position: relative;
+    margin-top: 30px;
+    padding: 10px 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: var(--text-muted);
+    opacity: 0.3;
+    top: 0;
+    bottom: 0;
+    left: 25px;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 65px;
+    margin-bottom: 35px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--bg-color);
+    border: 3px solid var(--primary-color);
+    left: 16px;
+    top: 6px;
+    z-index: 1;
+}
+
+.timeline-item:hover::after {
+    background: var(--primary-color);
+    transform: scale(1.2);
+}
+
+.timeline-item .date {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    background: var(--primary-light);
+    padding: 4px 10px;
+    border-radius: 15px;
+    margin-bottom: 8px;
+}
+
+.timeline-item h3 {
+    font-size: 1.25rem;
+    margin-bottom: 5px;
+}
+
+.timeline-item p {
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   7. SECTION CONTACT & FORMULAIRE
+   ========================================================================== */
+.contact-section {
+    text-align: center;
+    padding: 60px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.contact-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: var(--btn-text);
+    border-radius: 5px;
+    border: none;
+    }
+/* ==========================================================================
+   A. DÉFINITION DES ANIMATIONS (KEYFRAMES)
+   ========================================================================== */
+
+/* 1. Animation de pulsation pour la lueur IA */
+@keyframes iaPulse {
+    0% {
+        box-shadow: 0 4px 12px var(--primary-light), 0 0 0 0 rgba(0, 123, 255, 0.4);
+    }
+    70% {
+        box-shadow: 0 4px 15px var(--primary-light), 0 0 0 10px rgba(0, 123, 255, 0);
+    }
+    100% {
+        box-shadow: 0 4px 12px var(--primary-light), 0 0 0 0 rgba(0, 123, 255, 0);
+    }
+}
+
+/* 2. Animation d'apparition fluide (Fade In Up) */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ==========================================================================
+   B. APPLICATION DES ANIMATIONS SUR VOS ÉLÉMENTS
+   ========================================================================== */
+
+/* Applique la pulsation continue sur l'icône du logo */
+.logo-icon {
+    animation: iaPulse 2s infinite ease-in-out;
+}
+
+/* Applique l'apparition fluide au chargement sur le texte d'accueil */
+.hero-text-block h1 {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.hero-text-block p {
+    animation: fadeInUp 0.8s ease-out 0.2s forwards; /* Attend 0.2s avant de démarrer */
+    opacity: 0; /* Évite un clignotement avant le début de l'animation */
+}
+
+.ux-badge {
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+
+/* ==========================================================================
+   C. EFFET DE FLOU (FOCUS UX) SUR LES COMPÉTENCES
+   ========================================================================== */
+
+/* Lorsque vous survolez le conteneur global des compétences... */
+.skills-container:hover .skill-category {
+    opacity: 0.4; /* ...toutes les cartes deviennent légèrement transparentes */
+    transform: scale(0.98);
+}
+
+/* ...Sauf celle que le curseur est en train de survoler directement ! */
+.skills-container .skill-category:hover {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px var(--primary-light);
+    border-color: var(--primary-color);
+}
+/* ==========================================================================
+   ANIMATIONS ET EFFETS 3D
+   ========================================================================== */
+
+/* 1. Activer la perspective 3D sur vos conteneurs existants */
+.skills-container, .projects-grid {
+    perspective: 1000px; /* Indispensable pour donner de la profondeur aux éléments enfants */
+}
+
+/* 2. L'effet de bascule 3D au survol pour les cartes de projets et compétences */
+.skill-category, .project-card {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.5s ease;
+}
+
+.skill-category:hover, .project-card:hover {
+    /* Incline la carte vers l'arrière sur l'axe X et de côté sur l'axe Y, tout en l'avançant (translateZ) */
+    transform: translateY(-5px) rotateX(10deg) rotateY(-10deg) translateZ(20px);
+    box-shadow: -15px 20px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+
+/* Email field with a clickable Gmail suffix */
+.email-input-group {
+    position: relative;
+    width: 100%;
+}
+
+.email-input-group input {
+    padding-right: 115px;
+}
+
+.email-domain {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    padding: 5px 2px;
+    border: 0;
+    background: transparent;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.email-domain:hover,
+.email-domain:focus-visible {
+    text-decoration: underline;
+}
+
+.email-domain.is-hidden {
+    display: none;
+}
