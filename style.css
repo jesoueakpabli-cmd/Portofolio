@@ -607,3 +607,203 @@ section h2::after {
 .email-domain.is-hidden {
     display: none;
 }
+
+/* Responsive layout for tablets and phones */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 14px 20px;
+    }
+
+    #burger-menu {
+        display: block;
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 8px 20px 16px;
+        background-color: var(--card-bg);
+        box-shadow: 0 8px 14px rgba(0, 0, 0, 0.12);
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        margin: 0;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 12px 4px;
+    }
+
+    .hero-section {
+        min-height: auto;
+        padding: 28px 16px;
+    }
+
+    .ux-card {
+        flex-direction: column;
+        max-width: 560px;
+        border-radius: 16px;
+    }
+
+    .image-wrapper {
+        flex: none;
+        width: 100%;
+        min-width: 0;
+        height: 300px;
+    }
+
+    .hero-text-block {
+        padding: 30px 26px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-text-block h1 {
+        font-size: clamp(1.7rem, 6vw, 2.3rem);
+        line-height: 1.2;
+    }
+
+    .hero-text-block p {
+        margin-top: 14px;
+    }
+
+    .skills-section,
+    .projects-section,
+    .resume-section,
+    .contact-section {
+        padding: 44px 18px;
+    }
+
+    section h2 {
+        font-size: clamp(1.7rem, 6vw, 2.1rem);
+        margin-bottom: 28px;
+    }
+
+    .skills-container,
+    .projects-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+        margin-top: 22px;
+    }
+
+    .skill-category,
+    .project-card {
+        padding: 24px;
+    }
+
+    .contact-form {
+        width: 100%;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 16px;
+    }
+
+    .contact-btn,
+    #theme-toggle {
+        min-height: 44px;
+    }
+
+    footer {
+        padding: 18px 16px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 12px 16px;
+    }
+
+    .logo-brand {
+        font-size: 1.2rem;
+    }
+
+    .hero-section {
+        padding: 20px 12px;
+    }
+
+    .image-wrapper {
+        height: 250px;
+    }
+
+    .hero-text-block {
+        padding: 26px 20px;
+    }
+
+    .skills-section,
+    .projects-section,
+    .resume-section,
+    .contact-section {
+        padding: 38px 16px;
+    }
+
+    .skill-category,
+    .project-card {
+        padding: 20px;
+    }
+
+    .timeline::before {
+        left: 17px;
+    }
+
+    .timeline-item {
+        padding-left: 48px;
+    }
+
+    .timeline-item::after {
+        left: 8px;
+    }
+
+    .timeline-item h3 {
+        font-size: 1.1rem;
+    }
+
+    .email-input-group input {
+        padding-right: 105px;
+    }
+
+    .email-domain {
+        right: 8px;
+        font-size: 0.88rem;
+    }
+}
+
+@media (hover: none) {
+    .skills-container:hover .skill-category {
+        opacity: 1;
+        transform: none;
+    }
+
+    .skills-container .skill-category:hover,
+    .skill-category:hover,
+    .project-card:hover {
+        transform: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
